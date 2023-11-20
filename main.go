@@ -32,11 +32,6 @@ func (t *replacer) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err e
 	if len(_src) == 0 && atEOF {
 		return
 	}
-	// if !utf8.Valid(_src) {
-	// 	// If not a string, do not process
-	// 	err = ErrInvalidUTF8
-	// 	return
-	// }
 
 	for len(_src) > 0 {
 		_, n := utf8.DecodeRune(_src)
