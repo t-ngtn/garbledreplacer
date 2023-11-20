@@ -1,4 +1,4 @@
-module github.com/tomtwinkle/garbledreplacer
+module github.com/t-ngtn/garbledreplacer
 
 go 1.20
 

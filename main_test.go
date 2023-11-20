@@ -3,14 +3,15 @@ package garbledreplacer_test
 import (
 	"bytes"
 	"errors"
-	"github.com/tomtwinkle/garbledreplacer"
+	"strings"
+	"testing"
+	"unicode/utf8"
+
+	"github.com/t-ngtn/garbledreplacer"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/japanese"
 	"golang.org/x/text/encoding/traditionalchinese"
 	"golang.org/x/text/transform"
-	"strings"
-	"testing"
-	"unicode/utf8"
 )
 
 func TestNewTransformer(t *testing.T) {
