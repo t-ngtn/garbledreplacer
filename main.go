@@ -34,7 +34,14 @@ func (t *replacer) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err e
 	}
 
 	for len(_src) > 0 {
-		_, n := utf8.DecodeRune(_src)
+		r, n := utf8.DecodeRune(_src)
+		if r == utf8.RuneError {
+			// INFO: Assume only multibyte characters are split
+			// 	 If there is any other pattern, it needs to be handled properly.
+			err = transform.ErrShortSrc
+			break
+		}
+
 		buf := _src[:n]
 		if _, encErr := t.enc.Bytes(buf); encErr != nil {
 			// Replace strings that cannot be converted
